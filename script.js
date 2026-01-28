@@ -91,37 +91,37 @@
     }
   }
 
-  function handleNo(){
+  function handleNo() {
     if (isYay) return;
 
     clearError();
 
-    // If she keeps clicking after the last stage is already reached:
-    // show the hint (and keep showing the error too).
-    if (noIndex > noStages.length - 1) {
-      showError(finalError);      // #2 stays visible
-      setHintVisible(true);       // #1 appears ONLY on extra clicks
+    // CASE A: We are already past the point where "Last chance babe" has been clicked once.
+    // Any further "No" clicks show the hint (#1). Keep the error (#2) visible too.
+    if (noIndex >= noStages.length + 1) {
+      showError(finalError);     // #2 stays visible
+      setHintVisible(true);      // #1 shows on any clicks after the first "Last chance babe" click
       return;
     }
 
-    // This click sets the next "No" stage text
+    // CASE B: The "No" button is currently showing "Last chance babe"
+    // (meaning we've already set that label on a previous click).
+    // This is the FIRST click while it's already "Last chance babe":
+    // show error (#2) but NOT hint (#1) yet.
+    if (noIndex === noStages.length) {
+      showError(finalError);     // #2 appears ONLY when pressing "Last chance babe" the first time
+      setHintVisible(false);     // #1 appears only on later clicks
+      noIndex += 1;              // move into the "after last chance clicked" zone
+      return;
+    }
+
+    // CASE C: Normal progression through the stages (including the click that sets "Last chance babe")
     const nextText = noStages[noIndex];
     noBtn.textContent = nextText;
 
-    // Grow Yes each time No is clicked
     setYesScale(noIndex + 1);
+    setHintVisible(false);
 
-    // If we just hit "Last chance babe" (the final stage),
-    // show the error NOW (#2), but do NOT show the hint yet (#1).
-    const justHitLastStage = (noIndex === noStages.length - 1);
-    if (justHitLastStage) {
-      showError(finalError);     // #2 shows on the "Last chance babe" click
-      setHintVisible(false);     // #1 will only show on the NEXT click
-    } else {
-      setHintVisible(false);
-    }
-
-    // Move forward to the next index
     noIndex += 1;
   }
 
