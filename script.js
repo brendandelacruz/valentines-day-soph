@@ -96,22 +96,32 @@
 
     clearError();
 
-    // After last stage, any further "No" clicks trigger the error
-    if (noIndex >= noStages.length) {
-      showError(finalError);
-      setHintVisible(true);
+    // If she keeps clicking after the last stage is already reached:
+    // show the hint (and keep showing the error too).
+    if (noIndex > noStages.length - 1) {
+      showError(finalError);      // #2 stays visible
+      setHintVisible(true);       // #1 appears ONLY on extra clicks
       return;
     }
 
-    // Advance to the next stage
+    // This click sets the next "No" stage text
     const nextText = noStages[noIndex];
     noBtn.textContent = nextText;
 
-    // Increase Yes button size each time No is clicked
+    // Grow Yes each time No is clicked
     setYesScale(noIndex + 1);
 
-    setHintVisible(false);
+    // If we just hit "Last chance babe" (the final stage),
+    // show the error NOW (#2), but do NOT show the hint yet (#1).
+    const justHitLastStage = (noIndex === noStages.length - 1);
+    if (justHitLastStage) {
+      showError(finalError);     // #2 shows on the "Last chance babe" click
+      setHintVisible(false);     // #1 will only show on the NEXT click
+    } else {
+      setHintVisible(false);
+    }
 
+    // Move forward to the next index
     noIndex += 1;
   }
 
