@@ -110,9 +110,7 @@
     // Increase Yes button size each time No is clicked
     setYesScale(noIndex + 1);
 
-    // If this click just set the LAST stage, show hint text
-    const isLastStageNow = (noIndex === noStages.length - 1);
-    setHintVisible(isLastStageNow);
+    setHintVisible(false);
 
     noIndex += 1;
   }
