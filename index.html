@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Be My Valentine? 💘</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Floating hearts background (decorative) -->
+  <div class="hearts" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <button id="restartBtn" class="restart" type="button" aria-label="Restart from the beginning">
+    try again babe
+  </button>
+
+  <main id="main" class="wrap">
+    <section class="card" aria-labelledby="title">
+      <header class="header">
+        <div class="badge" aria-hidden="true">💌</div>
+        <div>
+          <h1 id="title" class="title">Soph… will you be my Valentine?</h1>
+          <p class="subtitle">
+            A very important question from <strong>Bren</strong> to <strong>Soph</strong> 💖
+          </p>
+        </div>
+      </header>
+
+      <div class="stage" id="stageAsk" aria-live="polite">
+        <div class="characters" role="group" aria-label="Cute characters representing Bren and Soph">
+          <!-- Bren Teddy -->
+          <figure class="char" aria-label="Bren, a cute teddy bear character">
+            <div class="charBubble">Bren 🧸</div>
+            <div class="teddy" aria-hidden="true">
+              <div class="t-head">
+                <div class="t-ear t-ear-l"></div>
+                <div class="t-ear t-ear-r"></div>
+                <div class="t-face">
+                  <div class="t-eye t-eye-l"></div>
+                  <div class="t-eye t-eye-r"></div>
+                  <div class="t-snout">
+                    <div class="t-nose"></div>
+                    <div class="t-mouth"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="t-body">
+                <div class="t-arm t-arm-l"></div>
+                <div class="t-arm t-arm-r"></div>
+                <div class="t-belly"></div>
+              </div>
+              <div class="t-heart" aria-hidden="true">❤</div>
+            </div>
+            <!-- <figcaption class="charLabel">Bren</figcaption> -->
+          </figure>
+
+          <!-- Soph Kitty Girl -->
+          <figure class="char" aria-label="Soph, a cute kitty girl character with a bow">
+            <div class="charBubble">Soph 🐱🎀</div>
+            <div class="kitty" aria-hidden="true">
+              <div class="k-head">
+                <div class="k-ear k-ear-l"></div>
+                <div class="k-ear k-ear-r"></div>
+
+                <div class="k-bow">
+                  <span class="k-bow-left"></span>
+                  <span class="k-bow-knot"></span>
+                  <span class="k-bow-right"></span>
+                </div>
+
+                <div class="k-face">
+                  <div class="k-eye k-eye-l"></div>
+                  <div class="k-eye k-eye-r"></div>
+                  <div class="k-nose"></div>
+                  <div class="k-whisk k-whisk-l"></div>
+                  <div class="k-whisk k-whisk-r"></div>
+                </div>
+              </div>
+              <div class="k-body">
+                <div class="k-dress"></div>
+              </div>
+              <div class="k-sparkle" aria-hidden="true">✨</div>
+            </div>
+            <!-- <figcaption class="charLabel">Soph</figcaption> -->
+          </figure>
+        </div>
+
+        <div class="questionArea">
+          <p id="questionText" class="questionText">
+            Be my Valentine? 💘
+          </p>
+
+          <p id="hintText" class="hint" hidden>
+            Babe… there aren’t any new stages after this 😭 Pick <strong>Yes</strong> or tap <strong>try again babe</strong>.
+          </p>
+
+          <p id="errorText" class="error" role="alert" hidden></p>
+
+          <div class="buttons" role="group" aria-label="Answer choices">
+            <button id="yesBtn" class="btn btn-yes" type="button">
+              Yes 💞
+            </button>
+
+            <button id="noBtn" class="btn btn-no" type="button">
+              No 😭
+            </button>
+          </div>
+
+          <p class="a11yNote">
+            Tip: You can use <kbd>Tab</kbd> and <kbd>Enter</kbd> to choose.
+          </p>
+        </div>
+      </div>
+
+      <!-- Celebration stage -->
+      <div class="stage" id="stageYay" hidden aria-live="polite">
+        <div class="yayWrap">
+          <h2 class="yayTitle">YAYYY, LES GOOOOO!!!</h2>
+          <p class="yaySub">Soph said yes 🥹💖</p>
+
+          <div class="celebrate">
+            <div class="confetti" aria-hidden="true"></div>
+            <div class="teddyBig" aria-hidden="true">
+              <div class="tb-head">
+                <div class="tb-ear tb-ear-l"></div>
+                <div class="tb-ear tb-ear-r"></div>
+                <div class="tb-face">
+                  <div class="tb-eye tb-eye-l"></div>
+                  <div class="tb-eye tb-eye-r"></div>
+                  <div class="tb-snout">
+                    <div class="tb-nose"></div>
+                    <div class="tb-mouth"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tb-body">
+                <div class="tb-arm tb-arm-l"></div>
+                <div class="tb-arm tb-arm-r"></div>
+                <div class="tb-belly"></div>
+              </div>
+              <div class="tb-text">🧸💃🕺</div>
+            </div>
+          </div>
+
+          <div class="yayFooter">
+            <button id="yayRestart" class="btn btn-yes" type="button">
+              back to the question 💌
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span aria-hidden="true">💗💜❤️</span>
+      <span class="footerText">Made with love by Bren</span>
+      <span aria-hidden="true">❤️💜💗</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
